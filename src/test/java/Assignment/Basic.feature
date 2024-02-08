@@ -4,6 +4,7 @@ Feature: Booking
     * url 'https://restful-booker.herokuapp.com'
     * configure header = { Content-Type: 'application/json' }
     * configure header = { Accept : 'application/json' }
+    * header cookie = {token: 'abc123'}
     * def req = '{
   "firstname": "Jim",
   "lastname": "Brown",

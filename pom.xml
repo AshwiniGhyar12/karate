@@ -20,7 +20,6 @@
             <version>1.4.0.RC3</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 </project>
