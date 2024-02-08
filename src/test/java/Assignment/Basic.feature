@@ -2,9 +2,8 @@ Feature: Booking
 
   Background:
     * url 'https://restful-booker.herokuapp.com'
-    * configure header = { Content-Type: 'application/json' }
-    * configure header = { Accept : 'application/json' }
-    * header cookie = {token: 'abc123'}
+    * configure header1 = { Content-Type: 'application/json',Accept : 'application/json'}
+    * configure header2 = {Autharization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=', cookie: 'token=123' }
     * def req = '{
   "firstname": "Jim",
   "lastname": "Brown",
@@ -27,7 +26,7 @@ Feature: Booking
   Scenario: create booking
     Given path '/booking'
     And request req
-    When method Post
+        When method Post
     Then status 200
     And match response.bookingid == '#number'
 
@@ -38,6 +37,7 @@ Feature: Booking
     And match response == {"firstname" : "Jim",  "lastname" : "Brown",  "totalprice" : 111,  "depositpaid" : true,  "bookingdates" : {  "checkin" : "2018-01-01",  "checkout" : "2019-01-01"  },  "additionalneeds" : "Breakfast" }
 
   Scenario: Update booking
+
     Given path '/booking/id'
     When method Put
     And request {  "firstname" : "James",  "lastname" : "Brown",  "totalprice" : 111,  "depositpaid" : true,  "bookingdates" : {  "checkin" : "2018-01-01",  "checkout" : "2019-01-01"  },  "additionalneeds" : "Breakfast"  }
